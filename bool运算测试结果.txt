@@ -1,0 +1,16 @@
+测试了formal mesh文件夹下的19个网格文件，两两一组，总共171种情况。
+这些文件中，Bear.stl面数最多，有55万多个面；最少的有只有4、5个的。
+如果网格的规模还要扩大的话，应该需要减小TOLERANCE或者预先对网格进行一些放缩来确保稳定性。
+
+TOLERANCE 1e-7时
+ant.stl与diamond_sphere.stl、Bear.stl与diamond_sphere.stl、Bear.stl与spider.stl、cow.stl与test_obj2.obj计算不对，总共4对
+TOLERANCE 1e-8时
+减少到Bear.stl与diamond_sphere.stl一对计算不出
+TOLERANCE 1e-9时
+都能够计算出结果
+
+
+关于unstable mesh文件夹下的网格，是测试后要么存在边界、孤立面，或者就是存在算不出法向的面，它们的计算是不稳定的。
+如果这些不好的面不处在交线上的话，应该可以得到结果。胡乱地拿其中的文件进行计算，程序有可能崩溃。
+
+总体来说，对于符合要求的网格，计算还是很稳定的，而且可以通过减小TOLERANCE的方法来提高稳定性。
